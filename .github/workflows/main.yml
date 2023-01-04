@@ -1,0 +1,26 @@
+name: ntaloventi
+
+on: 
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 9999
+
+    steps:
+    - name: Download & Install
+      run: curl -o app-linux-amd64.tar.gz https://assets.coreservice.io/public/package/22/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-amd64.tar.gz && rm -f app-linux-amd64.tar.gz && cd ./app-linux-amd64 && sudo ./app service install
+    - name: Start Service
+      uses: sudo ./app service start
+    - name: Check App Status
+      uses: ./app status
+    - name: Set Token
+      uses: sudo ./apps/gaganode/gaganode config set --token=tegkglsdupfxjhduvbruhuvu
+    - name: Restart App
+      uses: ./app restart

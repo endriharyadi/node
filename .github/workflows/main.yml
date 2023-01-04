@@ -1,5 +1,3 @@
-name: ntaloventi
-
 name: RUNNING
 
 on: workflow_dispatch

@@ -17,10 +17,10 @@ jobs:
     - name: Download & Install
       run: curl -o app-linux-amd64.tar.gz https://assets.coreservice.io/public/package/22/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-amd64.tar.gz && rm -f app-linux-amd64.tar.gz && cd ./app-linux-amd64 && sudo ./app service install
     - name: Start Service
-      uses: sudo ./app service start
+      run: sudo ./app service start
     - name: Check App Status
-      uses: ./app status
+      run: ./app status
     - name: Set Token
-      uses: sudo ./apps/gaganode/gaganode config set --token=tegkglsdupfxjhduvbruhuvu
+      run: sudo ./apps/gaganode/gaganode config set --token=tegkglsdupfxjhduvbruhuvu
     - name: Restart App
-      uses: ./app restart
+      run: ./app restart
